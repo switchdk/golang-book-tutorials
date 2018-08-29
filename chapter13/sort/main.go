@@ -14,7 +14,7 @@ import (
 const unsortedList string = "unsortedList.txt"
 const sortedList string = "sortedList.txt"
 
-// ByValue List with integers to sorted
+// ByValue List with integers to sort
 type ByValue []int
 
 func (bv ByValue) Len() int {
