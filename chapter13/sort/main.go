@@ -11,23 +11,27 @@ import (
 	"time"
 )
 
+const unsortedList string = "unsortedList.txt"
+const sortedList string = "sortedList.txt"
+
+// ByValue List with integers to sorted
 type ByValue []int
 
-func (this ByValue) Len() int {
-	return len(this)
+func (bv ByValue) Len() int {
+	return len(bv)
 }
 
-func (this ByValue) Less(i, j int) bool {
-	return this[i] < this[j]
+func (bv ByValue) Less(i, j int) bool {
+	return bv[i] < bv[j]
 }
 
-func (this ByValue) Swap(i, j int) {
-	this[i], this[j] = this[j], this[i]
+func (bv ByValue) Swap(i, j int) {
+	bv[i], bv[j] = bv[j], bv[i]
 }
 
 func sortList() {
 
-	values, err := ioutil.ReadFile("to_sort1.txt")
+	values, err := ioutil.ReadFile(unsortedList)
 	if err != nil {
 		fmt.Println("Fool")
 		return
@@ -51,7 +55,7 @@ func sortList() {
 
 	sort.Sort(ByValue(intList))
 
-	file := openFile("sorted.txt")
+	file := openFile(sortedList)
 	defer file.Close()
 
 	for _, i := range intList {
@@ -64,7 +68,7 @@ func sortList() {
 }
 
 func createList(size int) {
-	file := openFile("to_sort1.txt")
+	file := openFile(unsortedList)
 	defer file.Close()
 
 	rand.Seed(time.Now().UnixNano())
