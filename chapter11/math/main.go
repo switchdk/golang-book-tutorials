@@ -1,7 +1,7 @@
 package main
 
 import "fmt"
-import "golang-book/chapter11/math"
+import "golang-book/chapter11/math/math"
 
 func main() {
 	xs := []float64{1, 2, 3, 4}
